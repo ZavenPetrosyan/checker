@@ -1,0 +1,21 @@
+{
+    "Databases": {
+        "Domain": {
+            "postgres": {
+                "user": "postgres",
+                "password": "qweasd123",
+                "database": "domain",
+                "port": 5432,
+                "host": "localhost",
+                "ssl": false
+            }
+        } 
+    },
+    "API": {
+        "port": 5001
+    },
+    "rabbit": {
+        "url": "amqp://localhost",
+        "heartbeat": 60
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "migrations",
+  "version": "1.0.0",
+  "description": "database migrations",
+  "main": "knexfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "knex": "^0.16.3",
+    "util": "^0.11.1",
+    "pg": "^7.9.0"
+  },
+  "author": "Zaven Petrosyan",
+  "license": "ISC"
+}

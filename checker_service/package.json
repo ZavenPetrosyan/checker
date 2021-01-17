@@ -1,0 +1,33 @@
+{
+  "name": "checker_service",
+  "version": "1.0.0",
+  "description": "check incomig domains",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p ./",
+    "start": "node ./out/src/app.js"
+  },
+  "author": "Zaven Petrosyan",
+  "license": "ISC",
+  "dependencies": {
+    "amqp-ts-async": "^1.3.7",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "cls-bluebird": "^2.1.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.17.1",
+    "knex": "^0.19.1",
+    "lodash": "^4.14",
+    "pg": "^7.12.1",
+    "typescript": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.33",
+    "@types/cors": "^2.8.8",
+    "@types/express": "^4.17.8",
+    "@types/knex": "^0.16.1",
+    "@types/lodash": "^4.14.164",
+    "@types/node": "^14.14.6"
+  }
+}
