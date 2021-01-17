@@ -6,7 +6,7 @@ import { MessageValues, QueueNames } from '../../common/messaging/QueueTypesAndV
 import { CheckDomainPaths } from './enums/endpoindPaths.enum';
 import * as multer from 'multer';
 import { ResolvePath, RespondWithJson } from '../../utils/utils';
-import { ErrorCodes } from '../../common/messaging/errorCodes';
+import { ErrorCodes, ErrorUtil } from '../../common/messaging/errorCodes';
 
 const upload = multer({ dest: 'tmp/csv/' });
 
@@ -43,6 +43,9 @@ export class CheckDomainController {
       .on('data', (data) => fileRows.push(data))
       .on('end', async () => {
         for await (const data of fileRows) {
+          if (!data) {
+              throw ErrorUtil.newError(ErrorCodes.BAD_REQUEST);
+          }
           await broker.sendRequest(
             MessageValues.UPLOAD_DOMAIN,
             data.domain,
@@ -68,9 +71,9 @@ export class CheckDomainController {
   }
 
   init() {
-    this.router.post(CheckDomainPaths.UPLOAD_DOMAIN, upload.single('file'), this.uploadFile);
-    this.router.get(CheckDomainPaths.GET_FILES, this.getFileNames);
     this.router.get(CheckDomainPaths.GET_ALL, this.getAllDomains);
+    this.router.get(CheckDomainPaths.GET_FILES, this.getFileNames);
     this.router.get(CheckDomainPaths.GET_DOMAIN_BY_NAME, this.getDomainByName);
+    this.router.post(CheckDomainPaths.UPLOAD_DOMAIN, upload.single('file'), this.uploadFile);
   }
 }

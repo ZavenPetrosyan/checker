@@ -33,18 +33,6 @@ services:
       test: "exit 0"  
     networks:
       - db_net  
- 
-  # pgadmin:
-  #   image: chorss/docker-pgadmin4
-  #   ports:
-  #     - 5050:5050
-  #   expose:
-  #     - "5050"
-  #   depends_on:
-  #     PostgreSQL:
-  #       condition: service_healthy
-  #   links:
-  #     - "PostgreSQL:pgsql-server"        
 
   producer:
     build:
@@ -79,7 +67,7 @@ services:
       - db_net
     environment:
       - POSTGRES_PORT=5432
-      - POSTGRES_DB=db
+      - POSTGRES_DB=domain
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=pass
       - DATABASE_URL=PostgreSQL

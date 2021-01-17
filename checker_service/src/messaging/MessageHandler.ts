@@ -6,7 +6,6 @@ const domainService = new DomainService();
 
 export class MessageHandler extends MessageHandlerBase {
     protected async handleMessage(message: any): Promise<{} | void> {
-
         const body = message.body;
 
         switch (message.value) {
@@ -16,6 +15,7 @@ export class MessageHandler extends MessageHandlerBase {
                 return domainService.list();
             case MessageValues.GET_BY_NAME:
                 return domainService.getByName(body.name);
-        }
-    } 
+        };
+    }
+
 }
